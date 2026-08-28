@@ -9,11 +9,12 @@ Portable agent infrastructure extracted from a project without application code 
 - Portable skills: `caveman`, `caveman-commit`, `caveman-review`, `planning-with-files`, and the memory-skill suite.
 - An empty, Git-trackable memory-directory skeleton.
 
-## Intentionally excluded
+## Options
 
-- `tv_ai-bridge` and every other product/runtime artifact.
-- The `orca-cli` and `orchestration` skills.
-- All accumulated memory records, planning state, dependencies, Git metadata, and local lockfiles.
+- Exclude other product/runtime artifact.
+- The `orca-cli` and `orchestration` skills for command repos
+`npx skills add https://github.com/stablyai/orca --skill orca-cli,orchestration -y`
+- Migrate accumulated memory records, planning state, dependencies, Git metadata, and local lockfiles.
 
 ## Use
 
