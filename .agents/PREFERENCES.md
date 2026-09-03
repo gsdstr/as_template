@@ -1,6 +1,6 @@
 # Personal Preferences
 
-<!-- generated-by: ageroot; template: 0.1.0; rendered-at: 2026-09-03T00:00:00Z -->
+<!-- generated-by: ageroot; template: <template-version>; commit: <short-git-commit>; rendered-at: <ISO-8601 timestamp> -->
 
 > **This file is yours.** It's the one file every new user should customize.
 > Preferences are context, not procedure — tell the agent who you are, not

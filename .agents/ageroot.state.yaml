@@ -4,6 +4,7 @@ template:
   name: ageroot
   version: 0.1.0
   source: <template-source>
+  commit: <short-git-commit>
 
 installed_at: <ISO-8601 timestamp>
 rendered_at: <ISO-8601 timestamp>

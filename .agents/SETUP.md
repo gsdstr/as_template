@@ -1,6 +1,6 @@
 # Ageroot Setup and Updates
 
-<!-- generated-by: ageroot; template: 0.1.0; rendered-at: 2026-09-03T00:00:00Z -->
+<!-- generated-by: ageroot; template: <template-version>; commit: <short-git-commit>; rendered-at: <ISO-8601 timestamp> -->
 
 Use this document only when installing, configuring, or updating Ageroot. Do not
 load it during normal agent startup.
@@ -37,6 +37,7 @@ template:
   name: ageroot
   version: <template-version>
   source: <template-source>
+  commit: <short-git-commit>
 installed_at: <ISO-8601 timestamp>
 rendered_at: <ISO-8601 timestamp>
 managed_files:
@@ -45,7 +46,7 @@ managed_files:
 ```
 
 - `schema` — state format version.
-- `template` — source identity and installed template version.
+- `template` — source identity, installed template version, and short Git commit.
 - `installed_at` / `rendered_at` — installation and most recent render times.
 - `managed_files` — paths Ageroot examines during dry-run, with their render
   strategy.
@@ -83,7 +84,7 @@ manages project symlinks to `~/.skills-manager`.
 Rendered Markdown files use this marker when their format permits it:
 
 ```md
-<!-- generated-by: ageroot; template: <version>; rendered-at: <ISO-8601 timestamp> -->
+<!-- generated-by: ageroot; template: <version>; commit: <short-git-commit>; rendered-at: <ISO-8601 timestamp> -->
 ```
 
 The marker does not restrict edits and cannot replace state tracking.
