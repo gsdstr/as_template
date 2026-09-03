@@ -7,14 +7,13 @@ invocation. Humans edit this file; the agent does not.
 - Read any file in the project directory.
 - Run tests.
 - Create branches.
-- Write to `memory/` and `skills/` directories.
 - Create draft pull requests.
 - Read public HTTP APIs in the approved domains list.
 
 ## Requires approval
 - Merge pull requests.
 - Deploy to any environment (staging, production).
-- Delete files outside of `memory/working/`.
+- Delete files.
 - Install new dependencies or upgrade pinned versions.
 - Modify CI/CD configuration.
 - Run database migrations.
@@ -25,7 +24,6 @@ invocation. Humans edit this file; the agent does not.
 - Send HTTP requests to domains not on the approved list.
 - Modify `permissions.md` (only humans edit this file).
 - Disable or bypass `pre_tool_call` hooks.
-- Delete entries from episodic or semantic memory (archive, don't delete).
 
 ## Approved external domains
 - `api.github.com`

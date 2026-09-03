@@ -1,0 +1,7 @@
+schema: 1
+
+project:
+  name: <project-name>
+
+agent:
+  language: en

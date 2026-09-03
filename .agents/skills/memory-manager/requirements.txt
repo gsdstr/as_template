@@ -1,2 +1,0 @@
-# Optional development dependency: required by skill-creator quick_validate.py.
-PyYAML>=6.0

@@ -1,21 +1,13 @@
-# Agentic Stack Template
+# Ageroot Template
 
-Portable agent infrastructure extracted from a project without application code or project history.
+Portable Ageroot agent infrastructure.
 
-## Included
+## Contents
 
-- Root `AGENTS.md` adapter and the `.agents/AGENTS.md` brain map.
-- Agent protocols.
-- Portable skills: `caveman`, `caveman-commit`, `caveman-review`, `planning-with-files`, and the memory-skill suite.
-- An empty, Git-trackable memory-directory skeleton.
-
-## Options
-
-- Exclude other product/runtime artifact.
-- The `orca-cli` and `orchestration` skills for command repos
-`npx skills add https://github.com/stablyai/orca --skill orca-cli,orchestration -y`
-- Migrate accumulated memory records, planning state, dependencies, Git metadata, and local lockfiles.
+- `.agents/` — instructions, setup/update policy, skills policy, and protocols.
+- `AGENTS.md` — adapter that points supported harnesses to `.agents/`.
 
 ## Use
 
-Copy this directory into a new project, then initialize its memory files for that project. The supplied rules and skills treat memory as project-owned data; do not copy another project's records into it.
+Copy this directory into a project, set `.agents/ageroot.config.yaml`, then
+follow `.agents/SETUP.md`.

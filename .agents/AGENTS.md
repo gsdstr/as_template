@@ -1,5 +1,7 @@
 # Agent Infrastructure
 
+<!-- generated-by: ageroot; template: 0.1.0; rendered-at: 2026-09-03T00:00:00Z -->
+
 <!-- caveman-begin -->
 Respond terse like smart caveman. All technical substance stay. Only fluff die.
 
@@ -18,26 +20,29 @@ Auto-Clarity: drop caveman for security warnings, irreversible actions, user con
 Boundaries: code/commits/PRs written normal.
 <!-- caveman-end -->
 
-This folder is the portable brain. Any harness (Claude Code, Cursor, Windsurf, OpenCode, OpenClaw, Copilot CLI, Gemini, Hermes, Pi, Codex, standalone Python, Antigravity) can mount it and get the same memory, skills, and protocols.
+<!-- rtk-begin -->
+use @rtk:`rules/rtk-rules.md`
+<!-- rtk-end -->
 
-## Memory (read in this order)
-- `memory/personal/PREFERENCES.md` — stable user conventions
-- `memory/semantic/DECISIONS.md` — past architectural choices
-- `memory/semantic/LESSONS.md` — distilled patterns (rendered from `lessons.jsonl`)
-- `memory/episodic/AGENT_LEARNINGS.jsonl` — raw experience log (top-k by salience)
-- Active planning-with-files plan is current working memory: resolve via planning precedence, then read `task_plan.md`, `findings.md`, and `progress.md` in that order.
+This folder is portable Ageroot instructions. Any harness (Claude Code, Cursor, Windsurf, OpenCode, OpenClaw, Copilot CLI, Gemini, Hermes, Pi, Codex, standalone Python, Antigravity) can mount it and use the same skills and protocols.
 
-## Planning (for multi-step work)
-- Resolve active plan: prefer `$PLAN_ID`, then `.planning/.active_plan`, then newest `.planning/<plan-id>/`; fall back to root `task_plan.md`.
-- Use `task_plan.md` for phases and next action, `findings.md` for discoveries, `progress.md` for actions and results. Update them as work progresses.
+## Preferences
+- `PREFERENCES.md` — stable user conventions
 
 ## Protocols
 - `protocols/permissions.md` — read before any tool call
 - `protocols/tool_schemas/` — typed interfaces for external tools
 - `protocols/delegation.md` — rules for sub-agent handoff
 
-## Rules
-1. Check memory before decisions you have been corrected on before.
-2. Log every significant action append-only to `memory/episodic/AGENT_LEARNINGS.jsonl` via `skills/memory-manager/scripts/memory_reflect.py`.
-3. Follow `protocols/permissions.md`. Blocked means blocked.
-4. The harness is dumb on purpose. Reasoning lives in skills + the host agent.
+## Installation and updates
+
+Do not read during normal agent startup. Read this section only when configuring,
+installing, or updating Ageroot.
+
+Follow [`SETUP.md`](SETUP.md) for Ageroot configuration and update protocol.
+
+### Skills
+
+Skills are managed with [skills-manager](https://github.com/xingkongliang/skills-manager).
+It links project skills to shared skill store at `~/.skills-manager` (by default).
+Follow [`SKILLS.md`](SKILLS.md) when configuring or updating skills.

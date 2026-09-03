@@ -1,5 +1,7 @@
 # Personal Preferences
 
+<!-- generated-by: ageroot; template: 0.1.0; rendered-at: 2026-09-03T00:00:00Z -->
+
 > **This file is yours.** It's the one file every new user should customize.
 > Preferences are context, not procedure — tell the agent who you are, not
 > how to write code.
