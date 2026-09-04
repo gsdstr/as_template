@@ -1,5 +1,7 @@
 schema: 1
 
+snapshots: enabled
+
 project:
   name: <project-name>
 

@@ -1,6 +1,8 @@
 # Project-local state; create it in each consuming project.
 /.planning/
 
+.agents/snapshots/
+
 
 # Common local artifacts.
 .DS_Store
