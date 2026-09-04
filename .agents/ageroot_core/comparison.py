@@ -626,3 +626,4 @@ class SummaryReport:
 
         return "\n".join(lines)
 
+

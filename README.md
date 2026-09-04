@@ -5,6 +5,7 @@ Portable Ageroot agent infrastructure.
 ## Contents
 
 - `.agents/` — instructions, setup/update policy, skills policy, and protocols.
+- `.agents/ageroot_core/` — safety-first dry-run comparison runtime and tests.
 - `AGENTS.md` — adapter that points supported harnesses to `.agents/`.
 
 ## Use
