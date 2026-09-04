@@ -5,6 +5,13 @@
 Use this document only when installing, configuring, or updating Ageroot. Do not
 load it during normal agent startup.
 
+## Drop-in installation scope
+
+The Ageroot drop-in payload consists only of the root `AGENTS.md` adapter and
+the `.agents/` tree. During installation or update, copy and compare only those
+paths. Other files in the template repository are repository-development
+material and are not installed into consuming projects.
+
 ## Configuration and state
 
 - `.agents/ageroot.config.yaml` contains installation-specific render inputs and global policies.
