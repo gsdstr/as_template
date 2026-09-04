@@ -1,6 +1,21 @@
 {
-    "name": "ageroot",
-    "private": true,
+    "name": "ageroot_template",
     "version": "0.0.1",
-    "license": "MIT"
+    "private": true,
+    "description": "Agentic stack template",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gsdstr/ageroot_template"
+    },
+    "license": "MIT",
+    "scripts": {
+        "changeset": "changeset",
+        "version": "changeset version && node scripts/sync-plugin-version.mjs",
+        "check-plugin-version": "node scripts/sync-plugin-version.mjs --check"
+    },
+    "devDependencies": {
+        "@changesets/changelog-github": "^0.7.0",
+        "@changesets/cli": "^2.30.0"
+    },
+    "packageManager": "npm@10.9.4"
 }
