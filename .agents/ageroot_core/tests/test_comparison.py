@@ -27,6 +27,11 @@ class TestDeterministicNormalizer(unittest.TestCase):
         self.assertEqual(DeterministicNormalizer.normalize_text(""), "")
         self.assertEqual(DeterministicNormalizer.normalize_text("   \r\n\n"), "")
 
+    def test_generated_by_provenance_is_metadata_only(self):
+        old = "<!-- generated-by: ageroot; template: 0.1.0; commit: abc1234; rendered-at: 2026-09-03T00:00:00Z -->\n# Title\n"
+        new = "<!-- generated-by: ageroot; template: 0.1.1; commit: def5678; rendered-at: 2026-09-04T00:00:00Z -->\n# Title\n"
+        self.assertEqual(DeterministicNormalizer.normalize_text(old), DeterministicNormalizer.normalize_text(new))
+
 
 class TestSnapshotStore(unittest.TestCase):
     def setUp(self):
@@ -131,6 +136,12 @@ class TestThreeWayComparisonEngine(unittest.TestCase):
 
     def tearDown(self):
         self.tmp_dir.cleanup()
+
+    def test_planning_path_is_excluded_from_comparison_and_reporting(self):
+        result = self.engine.compare_path(".planning/test/task_plan.md", Strategy.GENERATED, "changed\n")
+        self.assertTrue(result.excluded)
+        self.assertEqual(result.result_class, ResultClass.UNCHANGED)
+        self.assertNotIn(".planning/test/task_plan.md", SummaryReport.format_summary([result]))
 
     def test_clean_generated_update(self):
         rel_path = ".agents/AGENTS.md"
@@ -299,5 +310,4 @@ class TestSummaryReport(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
 

@@ -64,7 +64,7 @@ Only Ageroot updates this file after approved installation or update work.
 Ageroot uses a safety-first dry-run comparison before any update is applied.
 
 1. **Render**: Re-render every managed template from current configuration and templates.
-2. **Normalize**: Deterministically normalize content (line endings, final newline, trailing whitespace, and safe Markdown/YAML formatting noise without altering YAML data/ordering or Markdown text/structure).
+2. **Normalize**: Deterministically normalize content (line endings, final newline, trailing whitespace, safe Markdown/YAML formatting noise, and `generated-by` provenance fields without altering YAML data/ordering or Markdown text/structure). A difference solely in the `generated-by` template version, commit, or render timestamp is metadata-only: classify it as `unchanged` and omit it from the diff.
 3. **Compare**:
    - **Renderer-owned (`generated`, `managed-regions`)**: Perform three-way comparison between `current`, `new render`, and `prior rendered snapshot`.
      - When `snapshots: disabled`, legacy installations without snapshots, or after an explicit one-time override: perform two-way `unverified` comparison and label clearly.
@@ -84,6 +84,7 @@ Ageroot uses a safety-first dry-run comparison before any update is applied.
 5. **Report (Summary-first confirmation)**:
    - Present a tiered summary: counts for `changed` and `unchanged` paths; path-level reason, apply eligibility, and full-diff access for `conflict` and `blocked` paths.
    - Summary alone permits confirmation; complete diffs remain available on request.
+   - Exclude `.planning/` completely from Ageroot discovery, rendering, comparison, and reporting; it belongs to the planning-with-files skill.
 6. **Confirm**: Wait for explicit user confirmation before applying.
 7. **Atomic apply**:
    - Only apply if all paths are eligible (`changed`, `unverified`, `region-merge`, `unchanged`).

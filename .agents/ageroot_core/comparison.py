@@ -62,6 +62,7 @@ class ComparisonResult:
     warnings: List[str] = field(default_factory=list)
     new_snapshot_content: Optional[str] = None
     new_snapshot_sha256: Optional[str] = None
+    excluded: bool = False
 
     @property
     def is_eligible(self) -> bool:
@@ -93,8 +94,16 @@ class DeterministicNormalizer:
         
         # 3. Collapse 3+ consecutive newlines to at most 2 (standard markdown/yaml formatter normalization)
         normalized = re.sub(r"\n{3,}", "\n\n", normalized)
-        
-        # 4. Ensure single final newline if non-empty
+
+        # 4. Generated-file provenance is metadata, not managed content.  A
+        # version/commit/timestamp-only change must not create an update.
+        normalized = re.sub(
+            r"<!-- generated-by: ageroot; template: [^;]+; commit: [^;]+; rendered-at: [^>]+ -->",
+            "<!-- generated-by: ageroot -->",
+            normalized,
+        )
+
+        # 5. Ensure single final newline if non-empty
         normalized = normalized.rstrip()
         if normalized:
             normalized += "\n"
@@ -319,6 +328,17 @@ class ThreeWayComparisonEngine:
         expected_link_target: Optional[str] = None,
     ) -> ComparisonResult:
         target_file = self.root_dir / relative_path
+
+        # Planning belongs to the planning-with-files skill.  It is never a
+        # managed Ageroot path and must not affect comparison or reporting.
+        if Path(relative_path).parts and Path(relative_path).parts[0] == ".planning":
+            return ComparisonResult(
+                path=relative_path,
+                strategy=strategy,
+                result_class=ResultClass.UNCHANGED,
+                reason="Excluded planning-with-files state",
+                excluded=True,
+            )
 
         # 1. Handle external-link strategy
         if strategy == Strategy.EXTERNAL_LINK:
@@ -582,6 +602,7 @@ class SummaryReport:
 
     @staticmethod
     def format_summary(results: List[ComparisonResult]) -> str:
+        results = [result for result in results if not result.excluded]
         counts: Dict[ResultClass, int] = {rc: 0 for rc in ResultClass}
         for r in results:
             counts[r.result_class] += 1
@@ -625,5 +646,4 @@ class SummaryReport:
             lines.append("")
 
         return "\n".join(lines)
-
 
