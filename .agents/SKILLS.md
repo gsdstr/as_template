@@ -25,11 +25,5 @@ It creates symlinks from this project to shared skill store at `~/.skills-manage
 - `caveman-explore` — read-only repository orientation and cross-file discovery.
 - `caveman-review` — compact code-review findings.
 - `planning-with-files` — durable planning for multi-step implementation work.
-
-## Optional
-
-- `memory-manager` — project-memory lifecycle.
-- `memory-auto-dream` — periodic memory synthesis.
-- `memory-clustering` — recurring-pattern extraction.
-- `memory-retention` — archival workflow.
-- `memory-runtime-cleanup` — legacy runtime audit.
+- `memory-manager` — episodic reflection, append-only journal writes, candidate review, semantic rendering, FTS5 search, and migration.
+- `memory-maintenance` — offline clustering, candidate staging, decay/archival, review queue upkeep, and FTS rebuilds (depends on `memory-manager`).
