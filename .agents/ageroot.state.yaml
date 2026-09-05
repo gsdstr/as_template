@@ -10,6 +10,8 @@ installed_at: <ISO-8601 timestamp>
 rendered_at: <ISO-8601 timestamp>
 
 managed_files:
+  - path: AGENTS.md
+    strategy: managed-regions
   - path: .agents/AGENTS.md
     strategy: generated
   - path: .agents/PREFERENCES.md

@@ -118,6 +118,20 @@ class TestManagedRegionParser(unittest.TestCase):
         self.assertNotIn("default template note", merged)
         self.assertTrue(any("user-notes" in w for w in warnings))
 
+    def test_template_adapter_has_only_generated_region(self):
+        template_agents = Path(__file__).resolve().parents[3] / "AGENTS.md"
+        ok, segments, error = ManagedRegionParser.parse_structure(
+            template_agents.read_text(encoding="utf-8")
+        )
+        self.assertTrue(ok, error)
+        regions = {
+            (segment["name"], segment["kind"])
+            for segment in segments
+            if segment["type"] == "region"
+        }
+        self.assertIn(("adapter", "generated"), regions)
+        self.assertEqual({("adapter", "generated")}, regions)
+
     def test_concurrent_edit_in_generated_region_is_conflict(self):
         base = "<!-- header-begin -->\nv1.0\n<!-- header-end -->\n"
         current = "<!-- header-begin -->\nv1.0-custom-edit\n<!-- header-end -->\n"
@@ -310,4 +324,3 @@ class TestSummaryReport(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
